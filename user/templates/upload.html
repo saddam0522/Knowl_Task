@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<div class="container pt-1">
+    <div class="col-lg-6 mx-auto shadow p-0">
+        <div class="alert alert-success p-4 text-center"> 
+            <h2>Add Your File Here</h2>
+        </div>
+    
+        <div class="p-2 text-bold">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}             
+                <!-- {% comment %} {{form|crispy}} {% endcomment %} -->
+                    {% for fm in form %}
+                    <p class="fw-bold mb-0">{{fm.label_tag}}</p>
+                    {{fm}}
+                    {% comment %} {{fm.errors|striptags}} {% endcomment %}
+                    <br>
+                    {% endfor %}    
+                    <hr>    
+                <input class="btn btn-info" type="submit" value="Add File">
+            </form>
+        </div>
+    
+    </div>
+</div>
+
+
+{% endblock %}

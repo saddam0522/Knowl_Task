@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="margin-bottom: 70px;">
+    <h1 style="width:30%; margin:auto; margin-top: 10px; color: rgb(26, 0, 128);">
+      All Files
+    </h1> 
+    
+      <h1>Uploaded Files : </h1>
+      {% for file in files %}
+    
+         
+            
+            
+            {% if file %} 
+                Title : {{file.title}}        
+                <img style="width: 200px; height: 140px;" 
+                src="{{ file.upload_files.url }}" alt="image" class="image1">
+                  <button type="submit"><a href="{% url 'share_file' username=user.username %}">Share</a></button>
+
+            {% else %}
+              Image not Avaiable
+            {% endif %}     
+      {% endfor %}
+
+      <h3>Files Shared by User:</h3>     
+{%for file in files %}
+    {%if file.shared_files.all %}
+      Title : {{file.title}}        
+      <img style="width: 200px; height: 140px;" 
+      src="{{ file.upload_files.url }}" alt="image" class="image1">
+{% endif %}
+{% endfor %}
+
+     <h1>Shared Files With You: </h1>
+      {% for file in shared_files %}     
+      {% if file %}
+           Shared By : <b>{{file.user.first_name }} {{file.user.last_name}}</b> 
+           <>  Title : {{file.title}}      
+          <img style="width: 200px; height: 140px;" 
+          src="{{ file.upload_files.url }}" alt="image" class="image1">
+      {% else %}
+        Image not Avaiable
+      {% endif %}     
+      {% endfor %}
+    </div>
+{% endblock body %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block body %}
+<h2>User List</h2>
+<div style="margin-bottom: 70px;">
+    <h1 style="width:30%; margin:auto; margin-top: 10px; color: rgb(26, 0, 128);">
+    </h1>
+    <h2>User Profile</h2>
+
+    <h3>Username: {{ user_profile.user.username }}</h3>
+    
+
+    <h3>Uploaded Files:</h3>
+    <ul>
+        {% for file in user_profile.uploaded_files %}
+            <li>{{ file.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h3>Shared Files:</h3>
+    <ul>
+        {% for file in user_profile.shared_files.all %}
+            <li>{{ file.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock body %}

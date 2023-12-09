@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %} 
+
+{% block body %}
+    
+ 
+        
+    <div class="container pt-1">
+        
+        <div class="col-lg-8 mx-auto shadow p-0 ">
+            <div class="alert alert-success text-center p-4 center"> 
+                <h2>Create Your Account</h2>
+
+                {% if messages %}
+                    {% for m in messages %}
+                    <small>{% if m.tags %} class="{{m.tags}}" {% endif %}>{{m}}</small> 
+                    {% endfor %}
+                {% endif %} 
+
+            </div>
+            <div class="p-5">                
+                <form method="post"  novalidate>
+                    {% csrf_token %}
+                    
+                    <!-- {{form | crispy}} -->
+                    {% for fm in form %}
+                    <p class="fw-bold mb-0">{{fm.label_tag}}</p>
+                    {{fm}}
+                    {{fm.errors|striptags}}
+                    <br>
+                    {% endfor %}                   
+                    
+                    <button class="btn btn-primary" type="submit">Create Account</button>
+                    <br>
+                    <small>Already you have an account <a href="{% url 'user_login'%}">login</a></small>
+                </form>         
+            </div>
+            
+        
+        </div>
+    </div>
+    
+          
+
+    
+{% endblock %}
+
+
+

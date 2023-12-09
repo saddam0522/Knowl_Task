@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="container pt-0 mb-25">
+    <div class="col-lg-12 mx-auto shadow py-10 bg-success">
+        <div class="alert alert-success p-4 text-center"> 
+            <h2>File Sharing Site</h2>
+        </div>        
+        <div class="p-2 ">           
+
+            <div class="row">
+                <div class="col-sm-6 mb-0 mb-sm-0">
+                  <div class="card">
+                    <div class="card-body">
+                       
+                      <h5 class="card-title"> Profile View </h5>
+                      <p class="card-text"> 
+                      </p>
+                      <a href="{% url 'user_profile' username=user.username %}" class="btn btn-primary">Profile</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+
+                        <h5 class="card-title">Upload File</h5>
+                      <p class="card-text pb-4">
+                      </p>
+                      <a href="{% url 'upload_file' %}" class="btn btn-primary">Add Files</a>
+                    </div>
+                  </div>
+                </div>
+            </div>       
+
+        </div>   
+        <div class="p-2 ">           
+
+          <div class="row">
+              <div class="col-sm-6 mb-0 mb-sm-0">
+                <div class="card">
+                  <div class="card-body">
+                     
+                    <h5 class="card-title"> Uploaded Files</h5>
+                    <p class="card-text"> 
+                    </p>
+                    <a href="{% url 'file_view' %}" class="btn btn-primary">Files</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    
+                      <h5 class="card-title">Search Peers</h5>
+                    <p class="card-text pb-4">
+                    </p>
+                    <a href="{% url 'search_user' %}" class="btn btn-primary">Search</a>
+                  </div>
+                </div>
+              </div>
+          </div>       
+
+      </div>   
+    </div>
+</div>
+
+{% endblock %}

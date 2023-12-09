@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block body %}
+<div style="margin-bottom: 70px;">
+    <h1 style="width:30%; margin:auto; margin-top: 10px; color: rgb(26, 0, 128);">
+    </h1>
+    
+    <h3>Share Files:</h3>
+    <form method="post">
+        {% csrf_token %}
+        {{ share_form.as_p }}
+        <button type="submit">Share</button>
+    </form>
+{% endblock body %}

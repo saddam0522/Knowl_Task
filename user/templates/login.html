@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+
+<div class="container pt-4">
+    <div class="col-lg-4 mx-auto shadow p-0">
+        <div class="alert alert-success p-4 text-center"> 
+            <h2>Login Here</h2>
+        </div>
+    
+        <div class="p-2 bg-info">
+            <form action="" method="POST">
+                {% csrf_token %}
+                    
+                <!-- {{form | crispy}} -->
+                {% for fm in form %}
+                <p class="fw-bold mb-0 pt-3">{{fm.label_tag}}</p>
+                {{fm}}
+                {{fm.errors|striptags}}
+            
+                {% endfor %}
+               
+                <br>
+                <button class="btn btn-primary" type="submit">Submit</button>
+                <br>
+                <small>Don't have an account <a href="{% url 'register'%}" class="">Register</a></small>
+            </form>
+        </div>
+    
+    </div>
+</div>
+
+
+
+{% endblock %}
